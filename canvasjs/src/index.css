@@ -13,14 +13,14 @@ code {
     monospace;
 }
 
-html, body, div, canvas {
+* {
   margin: 0;
   padding: 0;
+  border: 0;
 }
 
 nav {
   position: absolute;
- 
 }
 
 nav {
@@ -36,12 +36,12 @@ ul {
 
 li {
   margin: 10px;
-  background-color: black;
+  background-color: #002d33;
   border-radius: 5px;
 }
 
 li:hover {
-  background-color: rgb(17, 9, 44);
+  background-color: #00444d;
 }
 
 a {
@@ -59,4 +59,6 @@ a:hover {
 
 canvas {
   display: block;
+  margin:0;
+  padding:0;
 }

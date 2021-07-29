@@ -85,6 +85,8 @@ export default function Circles() {
     function animate() {
       requestAnimationFrame(animate);
       ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = "#00171a";
+      ctx.fillRect(0, 0, width, height);
   
       for(var i = 0; i < circleArray.length; i++) {
         circleArray[i].update();
@@ -97,11 +99,7 @@ export default function Circles() {
       canvas.height = height;
       ctx = canvas.getContext('2d');
   
-      const render = () => {
-        animate(ctx);
-      }
-      render();
-  
+      animate();
     }, [width, height]);
   
     const mouseMove = event => {
