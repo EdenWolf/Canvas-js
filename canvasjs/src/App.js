@@ -17,9 +17,16 @@ function useWindowSize() {
 function App() {
   const canvasRef = useRef(null);
   const [width, height] = useWindowSize();
+  const maxRadius = 40;
+  const minRadius = 2;
 
   var canvas;
   var ctx;
+
+  var mouse = {
+    x: undefined,
+    y: undefined
+  }
 
   function Circle(x, y, dx, dy, radius) {
     this.x = x;
@@ -27,12 +34,13 @@ function App() {
     this.dx = dx;
     this.dy = dy;
     this.radius = radius;
+    this.minRadius = radius;
+    this.color = colorArray[Math.floor(Math.random() * colorArray.length)];
 
     this.draw = function() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-      ctx.strokeStyle = "blue";
-      ctx.stroke();
+      ctx.fillStyle = this.color;
       ctx.fill();
     }
 
@@ -47,15 +55,25 @@ function App() {
         this.dy *= -1;
       }
 
+      if (mouse.x - this.x < 50 && mouse.x - this.x > -50 && mouse.y - this.y < 50 && mouse.y - this.y > -50) {
+        if (this.radius < maxRadius) {
+          this.radius += 2;
+        }
+      }
+      else if (this.radius > this.minRadius) {
+        this.radius -= 2;
+      }
+
       this.draw();
     }
   }
 
   var circleArray = [];
+  var colorArray = ['#006d77', '#83c5be', '#edf6f9', '#ffddd2', '#e29578'];
 
-  for(var i = 0; i < 100; i++) {
-    const radius = 30;
-    const speed = 10;
+  for(var i = 0; i < width * height / 1000; i++) {
+    const speed = 3;
+    var radius = Math.random() * minRadius + minRadius;
     var x = Math.random() * (width - radius * 2) + radius;
     var y = Math.random() * (height - radius * 2) + radius;
     var dx = (Math.random() - 0.5);
@@ -87,8 +105,13 @@ function App() {
 
   }, [width, height]);
 
+  const mouseMove = event => {
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
+  }
+
   return (
-    <div className="App">
+    <div className="App" onMouseMove={event => mouseMove(event)}>
       <canvas ref={canvasRef}></canvas>
     </div>
   );
