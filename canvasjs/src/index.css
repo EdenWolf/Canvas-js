@@ -17,3 +17,46 @@ html, body, div, canvas {
   margin: 0;
   padding: 0;
 }
+
+nav {
+  position: absolute;
+ 
+}
+
+nav {
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+li {
+  margin: 10px;
+  background-color: black;
+  border-radius: 5px;
+}
+
+li:hover {
+  background-color: rgb(17, 9, 44);
+}
+
+a {
+  display: inline-block;
+  padding: 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+a:hover {
+  text-shadow: white 0px 0px 20px;
+  transition-duration: 0.5s;
+}
+
+canvas {
+  display: block;
+}
