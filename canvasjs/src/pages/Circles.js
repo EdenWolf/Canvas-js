@@ -113,7 +113,7 @@ export default function Circles() {
 
   return (
     <div onMouseMove={event => mouseMove(event)}>
-      <canvas></canvas>
+      <canvas className="circlesCanvas"></canvas>
     </div>
   );
 }
