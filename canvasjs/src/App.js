@@ -31,9 +31,10 @@ function App() {
           </nav>
         </div>
         <Switch>
-          <Route path="/" exact component={() => <Circles useWindowSize={useWindowSize} />} />
+
           <Route path="/Circles" component={() => <Circles useWindowSize={useWindowSize} />} />
           <Route path="/Gravity" component={() => <Gravity useWindowSize={useWindowSize} />} />
+          <Route path="/" component={() => <Circles useWindowSize={useWindowSize} />} />
         </Switch>
       </Router>
     </div>
