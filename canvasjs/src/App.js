@@ -1,11 +1,13 @@
 import './App.css';
 import Circles from './pages/Circles';
 import Gravity from './pages/Gravity';
-import { Route, BrowserRouter as Router, Switch, Link } from "react-router-dom";
+import { Route, Switch, Link, useLocation } from "react-router-dom";
 import { useState, useLayoutEffect } from 'react';
 
 
 function App() {
+  useLocation();
+  
   function useWindowSize() {
     const [size, setSize] = useState([0, 0]);
     useLayoutEffect(() => {
@@ -21,7 +23,6 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
         <div className="container">
           <nav>
             <ul>
@@ -31,12 +32,10 @@ function App() {
           </nav>
         </div>
         <Switch>
-
           <Route path="/Circles" component={() => <Circles useWindowSize={useWindowSize} />} />
           <Route path="/Gravity" component={() => <Gravity useWindowSize={useWindowSize} />} />
           <Route path="/" component={() => <Circles useWindowSize={useWindowSize} />} />
         </Switch>
-      </Router>
     </div>
   );
 }
